@@ -35,6 +35,13 @@ function somar(e) {
     alert("O valor da soma eh: " + s);
 }
 
+function subtrair(e) {
+    let n1 = document.getElementById("numero1");
+    let n2 = document.getElementById("numero2");
+    let s = Number(n1.value) - (n2.value);
+    alert("O valor da subtração eh: " + s);
+}
+
 function comparar() {
     let n1 = document.getElementById("numero1");
     let n2 = document.getElementById("numero2");
@@ -44,13 +51,13 @@ function comparar() {
 
     if (valor1 > valor2)
         alert("O maior valor e: " + valor1);
-    
+
     else if (valor2 > valor1)
         alert("O maior valor e: " + valor2);
-    
+
     else
         alert("Os valores são iguais");
-    
+
 
     alert("O valor da soma eh: " + soma);
 }
@@ -127,6 +134,19 @@ function adicionar() {
 
     objeto.printNome();
     form.innerHTML += input;
+}
+
+// console.log("1") -> setTimeout() -> console.log("3")
+//                     console.log("2")
+//
+function testar() {
+    console.log("1");
+    let x = 0;
+    setTimeout(function () {
+        x++;
+        console.log("2");
+    }, 0);
+    console.log("3");
 }
 
 // HTTP : HyperText Transfer Protocol - protocolo de transferência de hypertexto
