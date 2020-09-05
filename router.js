@@ -1,9 +1,7 @@
-Math.sqrt(9);
-
 function carregarConteudo() {
     let path = window.location.pathname;
     let html = "";
-    switch (path) {
+    switch (path) { // verifica qual é a rota
         case "/":
             html = "formulario.html";
             break;
@@ -22,22 +20,21 @@ function carregarConteudo() {
     //                       serializa para texto -> container.innerHTML = texto
     if (html != "") {
         fetch(html) // Promise
-            .then(function (resposta) { // quando o servidor retornar a resposta HTTP
-                return resposta.text(); // Segunda Promise
-            })
-            .then(function (texto) { // quando a resposta for transformada em string
-                container.innerHTML = texto;
+            .then(
+                // quando o servidor retornar a resposta HTTP
+                resposta => resposta.text() // Segunda Promise
+            )
+            // quando a resposta for transformada em string
+            .then(function (texto) {
+                container.innerHTML = texto
             });
     }
-    console.log()
 }
 
 function transitionTo(event, path) {
     event.preventDefault(); // impede que a tag "a" ao ser clicada redirecione a pagina
-    window.history.pushState("", "", path);
+    window.history.pushState("", "", path); // troco apenas a url sem redirecionar
     carregarConteudo();
 }
 
-window.addEventListener("load", function () {
-    carregarConteudo();
-});
+window.addEventListener("load", () => carregarConteudo());

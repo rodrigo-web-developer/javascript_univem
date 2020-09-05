@@ -142,11 +142,57 @@ function adicionar() {
 function testar() {
     console.log("1");
     let x = 0;
+    // executa função de forma assíncrona
     setTimeout(function () {
         x++;
         console.log("2");
     }, 0);
     console.log("3");
+}
+// criando como class
+// class Pessoa {
+//     constructor() {
+//         this.cpf = "";
+//         this.nome = "";
+
+//         //arrow function
+//         const Outra = () => { // não usa a palavra function
+//             // function Outra() {
+//             this.printCpf();
+//         };
+
+//         Outra();
+//     }
+//     printCpf() {
+//         console.log("CPF: ", this.cpf); // this: objeto do contexto
+//     };
+// }
+
+// criando como function
+function Pessoa() {
+    this.cpf = "";
+    this.nome = "";
+    //arrow function
+    const Outra = () => this.printCpf()
+
+    // não usa a palavra function
+    // function Outra() { }
+    Outra();
+}
+
+Pessoa.prototype.printCpf = function () {
+    console.log("CPF: ", this.cpf); // this: objeto do contexto
+};
+
+Pessoa.prototype.printNome = function () {
+    console.log("Nome: ", this.cpf);
+};
+
+// metodo != função
+function printPorLinha() {
+    for (let parametro of arguments) {
+        console.log(parametro);
+    }
 }
 
 // HTTP : HyperText Transfer Protocol - protocolo de transferência de hypertexto

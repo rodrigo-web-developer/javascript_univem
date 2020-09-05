@@ -3,7 +3,7 @@ import re
 PORT = 8000
 class SimpleHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        match = re.search("\.(js|ico|html|png|css|map)$", self.path)
+        match = re.search("\.(js|ico|html|png|css|map)$", self.path) # self é o this em python
         res = None
         self.send_response(200)
         filename = "index.html" if match == None else self.path[1:]
