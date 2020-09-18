@@ -26,7 +26,7 @@ function carregarConteudo() {
             )
             // quando a resposta for transformada em string
             .then(function (texto) {
-                container.innerHTML = texto
+                container.innerHTML = texto;
             });
     }
 }
