@@ -3,13 +3,17 @@ function carregarConteudo() {
     let html = "";
     switch (path) { // verifica qual é a rota
         case "/":
-            html = "formulario.html";
+            html = "/src/formulario.html";
             break;
         case "/novaPagina":
-            html = "novapagina.html";
+            html = "/src/novapagina.html";
             break;
         case "/primo":
-            html = "primo.html";
+            html = "/src/primo.html";
+            break;
+        case "/categoria":
+            html = "/src/list_categoria.html";
+            carregouPaginaCategoria();
             break;
     }
 
@@ -27,6 +31,7 @@ function carregarConteudo() {
             // quando a resposta for transformada em string
             .then(function (texto) {
                 container.innerHTML = texto;
+                window.dispatchEvent(new Event("carregoupagina"));
             });
     }
 }
@@ -36,5 +41,7 @@ function transitionTo(event, path) {
     window.history.pushState("", "", path); // troco apenas a url sem redirecionar
     carregarConteudo();
 }
+
+window.addEventListener("popstate", () => carregarConteudo());
 
 window.addEventListener("load", () => carregarConteudo());
