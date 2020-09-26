@@ -14,6 +14,8 @@ html
 <html>
 
 <head>
+    <script src="/js/register.js"></script>
+    <script src="/js/produto.js"></script>
     <script src="/js/categoria.js"></script>
     <script src="/js/codigo.js"></script>
     <script src="/js/router.js"></script>
@@ -39,9 +41,18 @@ html
                         <a class="nav-link" href="#" onclick="transitionTo(event, '/categoria')"> Categorias</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="transitionTo(event, '/produto')"> Produtos</a>
+                    </li>
+                    <li class="nav-item">
                         <button onclick="testar()" type="button">Testar</button><br>
                     </li>
                 </ul>
+                <form>
+                    <div class="pull-right">
+                        <button class="btn btn-primary" type="button"
+                            onclick="transitionTo(event, '/registrar')">Registrar</button>
+                    </div>
+                </form>
             </div>
         </nav>
         <div id="container" class="content conteudo corpo-pagina etc-etc">

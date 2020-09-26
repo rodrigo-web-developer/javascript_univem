@@ -15,6 +15,13 @@ function carregarConteudo() {
             html = "/src/list_categoria.html";
             carregouPaginaCategoria();
             break;
+        case "/produto":
+            html = "/src/list_produto.html";
+            carregouPaginaProduto();
+            break;
+        case "/registrar":
+            html = "/src/register.html";
+            break;
     }
 
     let container = document.getElementById("container");

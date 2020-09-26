@@ -1,0 +1,87 @@
+<h1>Registre-se</h1>
+<div class="container">
+
+    <form onsubmit="registrar(event)">
+        <div class="row"> <!-- row = "linha" em ingles -->
+            <div class="col-lg-6"> <!-- ocupar 6 colunas (lg = large)-->
+                <div class="form-group">
+                    <label></label>E-mail: </label>
+                    <input class="form-control" type="email" name="email">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label>Password: </label>
+                    <input class="form-control" type="password" name="password">
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label>Confirm Password: </label>
+                    <input class="form-control" type="password" name="confirmPassword">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Nome: </label>
+                    <input class="form-control" type="text" name="nome">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>CEP</label>
+                    <input onfocusout="buscarCep(event)" class="form-control" type="text" name="cep">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>Cidade</label>
+                    <input class="form-control" type="text" name="cidade">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="form-group">
+                    <label>UF</label>
+                    <input class="form-control" type="text" name="uf">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Bairro</label>
+                    <input class="form-control" type="text" name="bairro">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Logradouro</label>
+                    <input class="form-control" type="text" name="logradouro">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Numero</label>
+                    <input class="form-control" type="text" name="numero">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="form-control btn btn-success" type="submit">Cadastrar</button>
+            </div>
+        </div>
+    </form>
+</div>

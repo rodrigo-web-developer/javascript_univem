@@ -26,20 +26,32 @@ switch (variavel) {
 
 // assincrono: ocorre fora de intervalo
 // print("a", "b", "c")
-function somar(e) {
-    e.preventDefault();
+function operacao(op) {
     let n1 = document.getElementById("numero1");
     let n2 = document.getElementById("numero2");
-    let s = soma(n1.value, n2.value);
+    let r = op(Number(n1.value), Number(n2.value));
 
-    alert("O valor da soma eh: " + s);
+    alert("O valor da resultado eh: " + r);
+}
+
+function somar(e) {
+    e.preventDefault();
+    operacao((n1, n2) => n1 + n2);
 }
 
 function subtrair(e) {
-    let n1 = document.getElementById("numero1");
-    let n2 = document.getElementById("numero2");
-    let s = Number(n1.value) - (n2.value);
-    alert("O valor da subtração eh: " + s);
+    e.preventDefault();
+    operacao((n1, n2) => n1 - n2);
+}
+
+function dividir(e) {
+    e.preventDefault();
+    operacao((n1, n2) => n1 / n2);
+}
+
+function multiplicar(e) {
+    e.preventDefault();
+    operacao((n1, n2) => n1 * n2);
 }
 
 function comparar() {
@@ -192,6 +204,33 @@ Pessoa.prototype.printNome = function () {
 function printPorLinha() {
     for (let parametro of arguments) {
         console.log(parametro);
+    }
+}
+
+function isPrimo(num) {
+    if (num % 2 == 0) {
+        return num == 2;
+    }
+    if (num <= 1) {
+        return false;
+    }
+    let raiz = Math.sqrt(num);
+    for (let divisor = 3; divisor <= raiz; divisor += 2) {
+        if (num % divisor == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function verificaPrimo() {
+    let numero = document.getElementById("numero_primo").value;
+    numero = parseInt(numero);
+
+    if (isPrimo(numero)) {
+        alert("O numero " + numero + " eh primo!!");
+    } else {
+        alert("O numero " + numero + " nao eh primo!!");
     }
 }
 
