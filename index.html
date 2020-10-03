@@ -14,7 +14,10 @@ html
 <html>
 
 <head>
+    <script src="/js/userControl.js"></script>
+    <script src="/js/utils.js"></script>
     <script src="/js/register.js"></script>
+    <script src="/js/login.js"></script>
     <script src="/js/produto.js"></script>
     <script src="/js/categoria.js"></script>
     <script src="/js/codigo.js"></script>
@@ -49,8 +52,15 @@ html
                 </ul>
                 <form>
                     <div class="pull-right">
-                        <button class="btn btn-primary" type="button"
-                            onclick="transitionTo(event, '/registrar')">Registrar</button>
+                        <div class="is-not-logged">
+                            <button class="btn btn-primary" type="button"
+                                onclick="transitionTo(event, '/registrar')">Registrar</button>
+                            <button class="btn btn-success" type="button"
+                                onclick="transitionTo(event, '/login')">Login</button>
+                        </div>
+                        <div class="is-logged">
+                            <b id="welcome"></b>
+                        </div>
                     </div>
                 </form>
             </div>

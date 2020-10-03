@@ -1,35 +1,48 @@
-function carregarConteudo() {
+function getHtml() {
     let path = window.location.pathname;
-    let html = "";
     switch (path) { // verifica qual é a rota
         case "/":
-            html = "/src/formulario.html";
-            break;
+            return "/src/formulario.html";
         case "/novaPagina":
-            html = "/src/novapagina.html";
-            break;
+            return "/src/novapagina.html";
         case "/primo":
-            html = "/src/primo.html";
-            break;
+            return "/src/primo.html";
         case "/categoria":
-            html = "/src/list_categoria.html";
             carregouPaginaCategoria();
-            break;
+            return "/src/categoria/list.html";
         case "/produto":
-            html = "/src/list_produto.html";
             carregouPaginaProduto();
-            break;
-        case "/registrar":
-            html = "/src/register.html";
-            break;
+            return "/src/list_produto.html";
     }
+    if (isLoggedIn()) {
+        switch (path) {
+            case "/categoria/criar":
+                return "/src/categoria/form.html";
+        }
+    }
+    else {
+        switch (path) {
+            case "/registrar":
+                return "/src/register.html";
+            case "/login":
+                return "/src/login.html";
+        }
+    }
+
+
+    return null;
+}
+
+
+function carregarConteudo() {
+    let html = getHtml();
 
     let container = document.getElementById("container");
 
     // if -> fetch() -> console.log()
     //       http request -> resposta.text()
     //                       serializa para texto -> container.innerHTML = texto
-    if (html != "") {
+    if (html) {
         fetch(html) // Promise
             .then(
                 // quando o servidor retornar a resposta HTTP
@@ -40,11 +53,13 @@ function carregarConteudo() {
                 container.innerHTML = texto;
                 window.dispatchEvent(new Event("carregoupagina"));
             });
+    } else {
+        window.dispatchEvent(new Event("carregoupagina"));
     }
 }
 
 function transitionTo(event, path) {
-    event.preventDefault(); // impede que a tag "a" ao ser clicada redirecione a pagina
+    event && event.preventDefault(); // impede que a tag "a" ao ser clicada redirecione a pagina
     window.history.pushState("", "", path); // troco apenas a url sem redirecionar
     carregarConteudo();
 }

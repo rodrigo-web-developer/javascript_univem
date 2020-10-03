@@ -24,16 +24,6 @@ async function buscarCep(event) {
     }
 }
 
-function formDataToJson(form) {
-    let data = new FormData(form);
-    let jsonObj = {};
-
-    for (const item of data.keys()) {
-        let v = data.get(item);
-        jsonObj[item] = v;
-    }
-    return jsonObj;
-}
 
 async function registrar(event) {
     event.preventDefault();
@@ -44,9 +34,7 @@ async function registrar(event) {
 
     let jsonString = JSON.stringify(jsonBody);
 
-    const urlApi = "https://javascriptunivem.azurewebsites.net";
-
-    let res = await fetch(urlApi + "/api/usuario", {
+    let res = await sendRequest("/api/usuario", {
         method: "POST",
         body: jsonString,
         headers: {

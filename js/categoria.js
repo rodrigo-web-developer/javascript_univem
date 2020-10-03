@@ -1,7 +1,5 @@
 async function listarCategorias() {
-    const urlApi = "https://javascriptunivem.azurewebsites.net";
-
-    let resposta = await fetch(urlApi + "/api/categoria");
+    let resposta = await sendRequest("/api/categoria");
     // fetch(urlApi + "/api/categoria").then(function(resposta){ });
     let json = await resposta.json();
 
@@ -38,4 +36,30 @@ async function listarCategorias() {
 
 function carregouPaginaCategoria() {
     window.addEventListener("carregoupagina", listarCategorias, { once: true });
+}
+
+async function addCategoria(event) {
+    event.preventDefault();
+    let form = event.target;
+    let json = formDataToJson(form);
+    let jsonString = JSON.stringify(json);
+
+    let token = getToken();
+
+    let resposta = await sendRequest("/api/categoria", {
+        method: "POST",
+        body: jsonString,
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    });
+
+    if (resposta.status == 200) {
+        alert("Categoria cadastrada com sucesso!");
+        transitionTo(null, "/categoria");
+    }
+    else {
+        alert("Houve erro na sua solicitação!");
+    }
 }
