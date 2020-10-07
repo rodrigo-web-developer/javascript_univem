@@ -62,4 +62,54 @@ Visto que o Javascript tem ganhado força com frameworks como ReactJS, VueJS e A
     - Utilizando funções String: replace, match
     - Exemplos de aplicação de expressões regulares
     
- 
+ ### Aula 6:
+  - Utilizando fetch API para consultar dados de API externa lendo formato JSON
+  - Criando evento custom que dispara toda vez que o conteúdo da página é trocado
+    - Entendendo addEventListener e dispatchEvent
+  - Manipulando dinamicamente tabelas para mostrar os dados retornados pela API
+    - Criando elementos com document.createElement()
+  - Introdução ao bootstrap:
+    - rows, columns e navbar
+  - Explicando qual a necessidade de um loader e pra que ele realmente é usado
+  - Introdução à Programação defensiva
+  
+### Aula 7:
+  - Criado formulário de registro de usuário para acesso a API
+  - Utilizando viacep para consulta de CEP em formato JSON
+    - Preenchendo dados de CEP digitado após evento onfocusout
+  - Submetendo formulário de cadastro de usuário 
+  - Fazendo POST com fetch e entendendo segundo parâmetro com { method, headers, body }
+  - Serializando um formulário em JSON
+    - Entendendo JSON.stringify e JSON.parse
+  - Utilizando evento "popstate" para recarregar conteúdo após o usuário clicar para voltar à página anterior
+  
+### Aula 8:
+  - Entendendo formas de autenticação e autorização
+  - Introdução a autenticação baseada em Token
+  - Entendendo JWT
+  - Criando formulário de login para solicitar JWT
+  - Entendendo armazenamento do browser: cache, session e local storages
+  - Guardando token e username em localStorage
+  - Criado classes para indicar quais elementos devem aparecer caso usuário esteja autenticado ou não
+    - classes is-not-logged e is-logged, manipulando o DOM para verificar se o usuário está logado e mostrar ou não alguns elementos
+  - Criado formulário de cadastro de categoria (que requer autorização)
+  - Enviando formulário em formato JSON com header Authorization: Bearer {token}
+  - Entendendo diferença entre HTTP Status Code 401 e 403
+  - Entendendo RESTful API
+  
+## Tecnologias utilizadas:
+- Javascript
+- HTML
+- CSS
+- Bootstrap
+- ViaCep API
+- REST Api para cadastro de produtos: https://javascriptunivem.azurewebsites.net/
+  - Documentação: https://www.getpostman.com/collections/82739bd39811ea15c049
+
+## Como executar?
+- Requisitos:
+  - Python 3.7+: necessário para executar o web-server
+- Clone o repositório na sua máquina
+- Execute o arquivo server.py
+  - Utilize `py server.py` ou `python server.py` dependendo da configuração da sua máquina
+- Pronto! A aplicação estará executando em http://localhost:8000
