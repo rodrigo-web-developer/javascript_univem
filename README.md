@@ -44,9 +44,10 @@ Visto que o Javascript tem ganhado força com frameworks como ReactJS, VueJS e A
 ### Aula 4:
   - Indo a fundo com objetos:
     - Entendendo classes (syxtax sugar) e prototypes
-    - Entendendo bindind de contexto (this)
+    - Entendendo bind de contexto (this)
     - Criando prototypes
-    
+  - Entendo contexto dinamico 
+  - Gerência de memória com reutilização de referência
   - Indo a fundo com funções:
     - Entendendo arrow function e sua diferença para functions
     - Entendendo e manipulando arguments
