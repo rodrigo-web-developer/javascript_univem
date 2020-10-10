@@ -13,3 +13,10 @@ function sendRequest(path, options) {
     const urlApi = "https://javascriptunivem.azurewebsites.net";
     return fetch(urlApi + path, options);
 }
+
+function addColumn(name, data, line) {
+    let coluna = document.createElement("td");
+    coluna.innerHTML = data[name];
+    line.appendChild(coluna);
+    return coluna;
+}

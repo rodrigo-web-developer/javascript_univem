@@ -9,6 +9,7 @@ class SimpleHandler(http.server.SimpleHTTPRequestHandler):
         filename = "index.html" if match == None else self.path[1:]
         if(self.path.endswith(".css")):
             self.send_header("Content-type", "text/css")
+        self.send_header("Cache-Control", "public, max-age=2592000")
         f = open(filename, "rb")
         self.end_headers()
         self.wfile.write(f.read())

@@ -1,14 +1,16 @@
 <h1>Produtos</h1>
-
+<button onclick="transitionTo(event, '/produto/criar')" class="btn btn-success">Adicionar</button>
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-8">
         <table id="produtos" class="table">
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Imagem</th>
                     <th>Nome</th>
                     <th>Preço</th>
                     <th>Categoria</th>
+                    <th class="is-logged">Operações</th>
                 </tr>
             </thead>
             <tbody>

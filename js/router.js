@@ -12,12 +12,24 @@ function getHtml() {
             return "/src/categoria/list.html";
         case "/produto":
             carregouPaginaProduto();
-            return "/src/list_produto.html";
+            return "/src/produto/list.html";
     }
     if (isLoggedIn()) {
         switch (path) {
             case "/categoria/criar":
                 return "/src/categoria/form.html";
+            case "/produto/criar":
+                carregouFormularioProduto();
+                return "/src/produto/form.html";
+            default:
+                if (path.match(/^\/categoria\/edit\/\d+$/)) {
+                    carregarFormularioEdit();
+                    return "/src/categoria/form.html";
+                }
+                else if (path.match(/^\/produto\/edit\/\d+$/)) {
+                    carregouFormularioProduto();
+                    return "/src/produto/form.html";
+                }
         }
     }
     else {

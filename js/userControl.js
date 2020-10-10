@@ -32,4 +32,9 @@ function isLoggedIn() {
     return token;
 }
 
+function logout() {
+    window.localStorage.removeItem("token");
+    transitionTo(null, '/');
+}
+
 window.addEventListener("carregoupagina", () => verificarNodes());

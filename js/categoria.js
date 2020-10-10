@@ -1,10 +1,13 @@
-async function listarCategorias() {
+async function getAllCategoria(){
     let resposta = await sendRequest("/api/categoria");
     // fetch(urlApi + "/api/categoria").then(function(resposta){ });
     let json = await resposta.json();
+    return json;
+}
 
-    console.log(json);
-
+async function listarCategorias() {
+    let json = await getAllCategoria();
+    
     let table = document.getElementById("categorias");
 
     if (table == null) return;
@@ -17,37 +20,61 @@ async function listarCategorias() {
 
     json.forEach(categoria => {
         let linha = document.createElement("tr"); //<tr></tr>
+        addColumn("id", categoria, linha);
+        addColumn("nome", categoria, linha);
+        addColumn("descricao", categoria, linha);
 
-        let colunaId = document.createElement("td"); //<td></td>
-        colunaId.innerHTML = categoria.id; //<td> categoria.id </td>
+        let colunaOperacoes = document.createElement("td");
+        let id = categoria.id;
+        colunaOperacoes.innerHTML = `<button onclick="transitionTo(event, '/categoria/edit/${id}')"` +
+            'class="btn btn-warning">' +
+            'Editar</button>' +
+            `<button class="btn btn-danger" onclick="excluirCategoria(${id})">Excluir</button>`;
+        colunaOperacoes.className = "is-logged";
 
-        let colunaNome = document.createElement("td");
-        colunaNome.innerHTML = categoria.nome;
-
-        let colunaDescricao = document.createElement("td");
-        colunaDescricao.innerHTML = categoria.descricao;
-
-        linha.appendChild(colunaId); // <tr><td> categoria.id </td></tr>
-        linha.appendChild(colunaNome); // adiciona coluna Nome
-        linha.appendChild(colunaDescricao); // adiciona coluna descricao
+        linha.appendChild(colunaOperacoes); // adiciona coluna descricao
         tbody.appendChild(linha);
     });
+
+    verificarNodes();
 }
 
 function carregouPaginaCategoria() {
     window.addEventListener("carregoupagina", listarCategorias, { once: true });
 }
 
-async function addCategoria(event) {
+function carregarFormularioEdit() {
+    window.addEventListener("carregoupagina", preencherComDados, { once: true });
+}
+
+async function preencherComDados() {
+    let id = window.location.pathname.match(/\d+$/)[0];
+    let resposta = await sendRequest("/api/categoria/" + id);
+    // fetch(urlApi + "/api/categoria").then(function(resposta){ });
+    let categoria = await resposta.json();
+    let inputNome = document.querySelector("input[name=nome]");
+    inputNome.value = categoria.nome;
+    let inputDescricao = document.querySelector("input[name=descricao]");
+    inputDescricao.value = categoria.descricao;
+}
+
+async function saveCategoria(event) {
     event.preventDefault();
     let form = event.target;
     let json = formDataToJson(form);
+
+    let id = window.location.pathname.match(/\d+$/);
+    if (id) {
+        id = id[0];
+        json.id = id;
+    }
+
     let jsonString = JSON.stringify(json);
 
     let token = getToken();
 
     let resposta = await sendRequest("/api/categoria", {
-        method: "POST",
+        method: id == null ? "POST" : "PUT",
         body: jsonString,
         headers: {
             "Content-Type": "application/json",
@@ -61,5 +88,24 @@ async function addCategoria(event) {
     }
     else {
         alert("Houve erro na sua solicitação!");
+    }
+}
+
+async function excluirCategoria(id) {
+    let token = getToken();
+    let confirmou = confirm("Tem certeza de que deseja excluir esse registro?");
+    if (confirmou) {
+        let resposta = await sendRequest("/api/categoria/" + id, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        });
+        if (resposta.status == 200) {
+            listarCategorias();
+        }
+        else {
+            alert("Não foi possível excluir o registro");
+        }
     }
 }

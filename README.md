@@ -97,6 +97,18 @@ Visto que o Javascript tem ganhado força com frameworks como ReactJS, VueJS e A
   - Enviando formulário em formato JSON com header Authorization: Bearer {token}
   - Entendendo diferença entre HTTP Status Code 401 e 403
   - Entendendo RESTful API
+
+### Aula 9:
+- Finalizado integração com API:
+  - Utilizando metodos: GET, POST, PUT, DELETE
+  - Recebendo ID por parâmetro
+- Aprendendo a criar rotas com templates: 
+  - Exemplo: /produto/edit/{id}
+  - Lendo ID por parâmetro no path
+- Criando select para drop-down de objeto relacionado (selecionando uma categoria para o produto)
+- Adicionado coluna de imagem
+- Aprendendo a usar o confirm dialog ao solicitar exclusão de um item
+- Criado processo de logout
   
 ## Tecnologias utilizadas:
 - Javascript
