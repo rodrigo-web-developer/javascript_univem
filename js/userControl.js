@@ -34,7 +34,28 @@ function isLoggedIn() {
 
 function logout() {
     window.localStorage.removeItem("token");
+    window.localStorage.removeItem("username");
     transitionTo(null, '/');
 }
 
+async function getDadosUsuario() {
+    let token = getToken();
+    if (!token) {
+        return;
+    }
+    let resposta = await sendRequest("/api/usuario/myAccount", {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    });
+    if (resposta.status != 200) {
+        return logout();
+    }
+    else {
+        let dados = await resposta.json();
+        window.localStorage.setItem("username", dados.perfil.nome);
+    }
+}
+
 window.addEventListener("carregoupagina", () => verificarNodes());
+window.addEventListener("load", () => getDadosUsuario());

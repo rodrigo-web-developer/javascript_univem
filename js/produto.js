@@ -1,5 +1,22 @@
+async function getCount() {
+    let respostaCount = await sendRequest("/api/produto/count");
+    if (respostaCount.status != 200) {
+        return;
+    }
+    let count = await respostaCount.json();
+    return count.count;
+}
+
 async function listarProdutos() {
-    let resposta = await sendRequest("/api/produto");
+    let count = getCount();
+
+    let paginas = Math.ceil(count / 5);
+
+    let params = new URLSearchParams(window.location.search);
+
+    let page = Number(params.get("page")) || 1;
+
+    let resposta = await sendRequest(`/api/produto?pageSize=5&page=${page}`);
     // fetch(urlApi + "/api/categoria").then(function(resposta){ });
     let json = await resposta.json();
 

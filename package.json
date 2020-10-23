@@ -1,0 +1,24 @@
+{
+  "name": "javascript_univem",
+  "version": "1.0.0",
+  "description": "Projeto de aula javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RodrigoRodriguesX10/javascript_univem.git"
+  },
+  "author": "Rodrigo Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RodrigoRodriguesX10/javascript_univem/issues"
+  },
+  "homepage": "https://github.com/RodrigoRodriguesX10/javascript_univem#readme",
+  "devDependencies": {
+    "webpack": "^5.2.0",
+    "webpack-cli": "^4.0.0"
+  }
+}
