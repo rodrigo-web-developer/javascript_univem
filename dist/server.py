@@ -1,15 +1,23 @@
 import http.server, socketserver
 import re
 PORT = 8001
+
+indexFile = open("index.html", "rb")
+cacheIndex = indexFile.read()
+
 class SimpleHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         match = re.search("\.(js|ico|html|png|css|map)$", self.path) # self é o this em python
         res = None
         self.send_response(200)
-        filename = "index.html" if match == None else self.path[1:]
+        self.send_header("Cache-Control", "public, max-age=2592000")
+        if match == None:
+            self.end_headers()
+            self.wfile.write(cacheIndex)
+            return
+        filename = self.path[1:]
         if(self.path.endswith(".css")):
             self.send_header("Content-type", "text/css")
-        self.send_header("Cache-Control", "public, max-age=2592000")
         f = open(filename, "rb")
         self.end_headers()
         self.wfile.write(f.read())
