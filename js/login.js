@@ -24,3 +24,5 @@ async function logar(event) {
         alert("Usuario ou senha invalidos")
     }
 }
+
+window.logar = logar;

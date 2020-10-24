@@ -48,3 +48,7 @@ async function registrar(event) {
         alert("Houve erro na criacao do usuario")
     }
 }
+
+
+window.buscarCep = buscarCep;
+window.registrar = registrar;

@@ -109,3 +109,12 @@ async function excluirCategoria(id) {
         }
     }
 }
+
+
+window.excluirCategoria = excluirCategoria;
+window.saveCategoria = saveCategoria;
+window.getAllCategoria = getAllCategoria;
+window.listarCategorias = listarCategorias;
+window.carregarFormularioEdit = carregarFormularioEdit;
+window.carregouPaginaCategoria = carregouPaginaCategoria;
+window.preencherComDados = preencherComDados;

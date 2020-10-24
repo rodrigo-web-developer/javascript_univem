@@ -20,3 +20,7 @@ function addColumn(name, data, line) {
     line.appendChild(coluna);
     return coluna;
 }
+
+window.addColumn = addColumn;
+window.sendRequest = sendRequest;
+window.formDataToJson = formDataToJson;

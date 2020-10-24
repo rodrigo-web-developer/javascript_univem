@@ -160,3 +160,13 @@ async function excluirProduto(id) {
         }
     }
 }
+
+
+window.getCount = getCount;
+window.excluirProduto = excluirProduto;
+window.saveProduto = saveProduto;
+window.verificarEdicao = verificarEdicao;
+window.carregarForm = carregarForm;
+window.carregouPaginaProduto = carregouPaginaProduto;
+window.carregouFormularioProduto = carregouFormularioProduto;
+window.listarProdutos = listarProdutos;

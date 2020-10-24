@@ -59,3 +59,10 @@ async function getDadosUsuario() {
 
 window.addEventListener("carregoupagina", () => verificarNodes());
 window.addEventListener("load", () => getDadosUsuario());
+
+
+window.logout = logout;
+window.isLoggedIn = isLoggedIn;
+window.getToken = getToken;
+window.verificarNodes = verificarNodes;
+window.getDadosUsuario = getDadosUsuario;

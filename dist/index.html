@@ -1,0 +1,50 @@
+<html>
+<head>
+    <script src="./bundle.js"></script>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand bg-light">
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="transitionTo(event, '/')">Pagina Inicial </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="transitionTo(event, '/novaPagina')"> Nova Pagina</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="transitionTo(event, '/primo')"> Primo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="transitionTo(event, '/categoria')"> Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="transitionTo(event, '/produto')"> Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <button onclick="testar()" type="button">Testar</button><br>
+                    </li>
+                </ul>
+                <form>
+                    <div class="pull-right">
+                        <div class="is-not-logged">
+                            <button class="btn btn-primary" type="button"
+                                onclick="transitionTo(event, '/registrar')">Registrar</button>
+                            <button class="btn btn-success" type="button"
+                                onclick="transitionTo(event, '/login')">Login</button>
+                        </div>
+                        <div class="is-logged">
+                            <b id="welcome"></b>
+                            <button type="button" class="btn btn-primary" onclick="logout()">Logout</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </nav>
+        <div id="container" class="content container conteudo corpo-pagina etc-etc">
+        </div>
+    </div>
+</body>
+
+</html>

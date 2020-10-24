@@ -45,8 +45,14 @@ function getHtml() {
     return null;
 }
 
+function transitionTo(event, path) {
+    event && event.preventDefault(); // impede que a tag "a" ao ser clicada redirecione a pagina
+    window.history.pushState("", "", path); // troco apenas a url sem redirecionar
+    return carregarConteudo();
+}
 
 function carregarConteudo() {
+    console.log("pipipipopopo2");
     let html = getHtml();
 
     let container = document.getElementById("container");
@@ -70,12 +76,12 @@ function carregarConteudo() {
     }
 }
 
-function transitionTo(event, path) {
-    event && event.preventDefault(); // impede que a tag "a" ao ser clicada redirecione a pagina
-    window.history.pushState("", "", path); // troco apenas a url sem redirecionar
-    carregarConteudo();
-}
-
 window.addEventListener("popstate", () => carregarConteudo());
 
 window.addEventListener("load", () => carregarConteudo());
+
+
+// faz a função usada e joga ela no escopo da window, permitindo ser chamada via HTML
+window.transitionTo = transitionTo;
+window.getHtml = getHtml;
+window.carregarConteudo = carregarConteudo;

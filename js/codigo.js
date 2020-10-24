@@ -234,6 +234,21 @@ function verificaPrimo() {
     }
 }
 
+window.somar = somar;
+window.subtrair = subtrair;
+window.dividir = dividir;
+window.multiplicar = multiplicar;
+window.operacao = operacao;
+window.testar = testar;
+window.testarLet = testarLet;
+window.testarVar = testarVar;
+window.isPrimo = isPrimo;
+window.comparar = comparar;
+window.verificaPrimo = verificaPrimo;
+window.printPorLinha = printPorLinha;
+window.adicionar = adicionar;
+window.soma = soma;
+
 // HTTP : HyperText Transfer Protocol - protocolo de transferência de hypertexto
 
 // JSON - JavaScript Object Notation - notação de objeto javascript
