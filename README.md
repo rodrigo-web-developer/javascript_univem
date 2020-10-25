@@ -110,12 +110,25 @@ Visto que o Javascript tem ganhado força com frameworks como ReactJS, VueJS e A
 - Aprendendo a usar o confirm dialog ao solicitar exclusão de um item
 - Criado processo de logout
   
+### Aula 10:
+- Criando paginação com parâmetros passados pela URL (?page=)
+- Checando validade do token ao entrar na aplicação e forçar logout para usuário com token expirado
+- Gerando arquivos para publicação com WebPack:
+    - Entendendo os conceitos de webpack: minify, uglify, mangle etc
+    - Entendendo o uso do babel para gerar bundle com ES5
+    - Consertando problemas de arquivo publicado: dead code e function name
+        - Entendendo tree-shaking
+    - Enviando funções utlizadas em evento para o escopo da window
+    - Gerando arquivo bundle.js com CSS embutido
+- Rodando arquivo publicado e comparando a quantidade e tempo das requisições
+
 ## Tecnologias utilizadas:
 - Javascript
 - HTML
 - CSS
 - Bootstrap
 - ViaCep API
+- Webpack
 - REST Api para cadastro de produtos: https://javascriptunivem.azurewebsites.net/
   - Documentação: https://www.getpostman.com/collections/82739bd39811ea15c049
 
@@ -126,3 +139,5 @@ Visto que o Javascript tem ganhado força com frameworks como ReactJS, VueJS e A
 - Execute o arquivo server.py
   - Utilize `py server.py` ou `python server.py` dependendo da configuração da sua máquina
 - Pronto! A aplicação estará executando em http://localhost:8000
+
+## Projetos de alunos: 
