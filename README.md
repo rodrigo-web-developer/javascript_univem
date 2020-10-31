@@ -122,6 +122,27 @@ Visto que o Javascript tem ganhado força com frameworks como ReactJS, VueJS e A
     - Gerando arquivo bundle.js com CSS embutido
 - Rodando arquivo publicado e comparando a quantidade e tempo das requisições
 
+### Aula extra:
+- Introdução ao GraphQL:
+  - Entendendo conceitos básicos de GraphQL
+  - Criando queries
+  - Utilizando arguments para consultas:
+    - produto(id)
+    - produto(categoria)
+  - Utilizando fragments para consultas
+  - Alterando tela de edição de produto para trazer os dados com apenas uma chamada GraphQL
+- Introdução ao OData:
+  - Entendendo os conceitos básicos de OData
+  - Criando queries:
+    - $orderby
+    - $filter
+    - $top
+    - $skip
+    - $select
+    - $expand
+  - Alterando listagem de produto para chamar odata ordenando pela coluna selecionada
+
+
 ## Tecnologias utilizadas:
 - Javascript
 - HTML
