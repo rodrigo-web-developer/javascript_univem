@@ -45,7 +45,13 @@ async function registrar(event) {
     if (res.status == 200) {
         alert("Cadastrado com sucesso! Vá para a pagina de login");
     } else {
-        alert("Houve erro na criacao do usuario")
+        // let erros = await res.json();
+
+        // erros.errors.forEach((erro) => {
+        //     alert(`campo ${erro.field}: ${erro.message}`)
+        // });
+
+        alert("Houve erro durante o cadastro");
     }
 }
 

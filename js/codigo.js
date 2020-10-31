@@ -234,6 +234,14 @@ function verificaPrimo() {
     }
 }
 
+function contarVogais(e) {
+    let p = document.getElementById("qtd_vogais");
+    let textarea = e.target; //document.getElementById("id_textarea")
+    let vogais = textarea.value.match(/[aeiou]/gi);
+    p.innerText = `O texto possui ${vogais.length} vogais`;
+}
+
+window.contarVogais = contarVogais;
 window.somar = somar;
 window.subtrair = subtrair;
 window.dividir = dividir;

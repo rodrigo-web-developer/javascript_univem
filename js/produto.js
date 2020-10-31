@@ -7,16 +7,23 @@ async function getCount() {
     return count.count;
 }
 
-async function listarProdutos() {
-    let count = getCount();
+const listProduto = { order: "id+desc" };
 
-    let paginas = Math.ceil(count / 5);
+async function listarProdutos(e, order) {
 
     let params = new URLSearchParams(window.location.search);
 
-    let page = Number(params.get("page")) || 1;
+    let skip = (Number(params.get("page")) || 1) * 5;
 
-    let resposta = await sendRequest(`/api/produto?pageSize=5&page=${page}`);
+    if (listProduto.order.startsWith(order)) {
+        listProduto.order = listProduto.order.endsWith("desc") ? order + "+asc" : order + "+desc";
+    }
+    else {
+        listProduto.order = order ? order + "+asc" : listProduto.order;
+    }
+
+
+    let resposta = await sendRequest(`/odata/produto?$orderby=${listProduto.order}`);
     // fetch(urlApi + "/api/categoria").then(function(resposta){ });
     let json = await resposta.json();
 
@@ -30,7 +37,7 @@ async function listarProdutos() {
 
     tbody.innerHTML = "";
 
-    json.forEach(produto => {
+    json.value.forEach(produto => {
         let linha = document.createElement("tr"); //<tr></tr>
 
         addColumn("id", produto, linha);
@@ -74,9 +81,11 @@ function carregouFormularioProduto() {
     window.addEventListener("carregoupagina", verificarEdicao, { once: true });
 }
 
-async function carregarForm() {
+async function carregarDropDownCategoria(categorias) {
     let select = document.getElementById("categoria_select");
-    let categorias = await getAllCategoria();
+    if (!categorias) {
+        categorias = await getAllCategoria();
+    }
     categorias.forEach(categoria => {
         let option = document.createElement("option");
         option.value = categoria.id;
@@ -86,13 +95,24 @@ async function carregarForm() {
 }
 
 async function verificarEdicao() {
-    await carregarForm();
-    let id = window.location.pathname.match(/\d+$/)
+    let id = window.location.pathname.match(/\d+$/);
+    let categorias = null;
     if (id) {
         id = id[0];
-        let resposta = await sendRequest("/api/produto/" + id);
+        let graphQLConsulta = { "query": "{\r\nproduto(id: " + id + ") {\r\nid\r\nnome\r\npreco\r\ndescricao\r\nestoque\r\nimage\r\ncategoria {\r\nid\r\nnome\r\n}\r\n}\r\ncategoria {\r\nid\r\nnome\r\n}\r\n}" };
+        let resposta = await sendRequest("/graphQL", {
+            method: "POST",
+            body: JSON.stringify(graphQLConsulta),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
         // fetch(urlApi + "/api/produto").then(function(resposta){ });
-        let produto = await resposta.json();
+
+        let dadosGraphQL = await resposta.json();
+        let produto = dadosGraphQL._data.produto[0];
+        categorias = dadosGraphQL._data.categoria;
+
         let inputNome = document.querySelector("input[name=nome]");
         inputNome.value = produto.nome;
         let inputDescricao = document.querySelector("input[name=descricao]");
@@ -107,6 +127,7 @@ async function verificarEdicao() {
         let inputCategoria = document.getElementById("categoria_select");
         inputCategoria.value = produto.categoria.id;
     }
+    await carregarDropDownCategoria();
 }
 
 async function saveProduto(event) {
@@ -166,7 +187,7 @@ window.getCount = getCount;
 window.excluirProduto = excluirProduto;
 window.saveProduto = saveProduto;
 window.verificarEdicao = verificarEdicao;
-window.carregarForm = carregarForm;
+window.carregarDropDownCategoria = carregarDropDownCategoria;
 window.carregouPaginaProduto = carregouPaginaProduto;
 window.carregouFormularioProduto = carregouFormularioProduto;
 window.listarProdutos = listarProdutos;

@@ -12,6 +12,7 @@ class SimpleHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Cache-Control", "public, max-age=2592000")
         if match == None:
+            self.send_header("Content-type", "text/html")
             self.end_headers()
             self.wfile.write(cacheIndex)
             return
