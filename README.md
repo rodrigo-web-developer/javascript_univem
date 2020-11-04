@@ -161,6 +161,12 @@ Visto que o Javascript tem ganhado força com frameworks como ReactJS, VueJS e A
   - Utilize `py server.py` ou `python server.py` dependendo da configuração da sua máquina
 - Pronto! A aplicação estará executando em http://localhost:8000
 
-## Projetos de alunos: 
+## Publicações de alunos: 
 
 - Vitor Ferreira Rafael: https://univemjavascript.netlify.app/
+
+- Vitor Alexandre: https://vk2store.netlify.app/
+
+- Miguel Vieira Colombo: https://univemjs.netlify.app/
+
+- Maria Eduarda de Souza Santos: https://js-univem.netlify.app/
